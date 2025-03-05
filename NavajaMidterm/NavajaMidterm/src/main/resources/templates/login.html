@@ -4,19 +4,29 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/css/index.css}">
     <style>
+        
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #0079eb;
+            padding: 20px;
+        }
         .login-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
+            background-color: #ffffff; /* Changed background color to white */
         }
 
         .login-btn {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background-color: white;
+            background-color: rgb(0, 0, 0);
             width: 240px;
             padding: 10px 20px;
             color: black;
@@ -33,13 +43,15 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="login-container">
-        <h1>Login to contacts</h1>
-        <form class="login-form" th:action="@{/oauth2/authorization/google}" method="get">
-            <button class="login-btn" type="submit">
-                <img src="/images/google-color-svgrepo-com.svg"> <p>Login with Google</p>
-            </button>
-        </form>
+    <div class="container">
+        <div class="login-container">
+            <h1>Login to contacts</h1>
+            <form class="login-form" th:action="@{/oauth2/authorization/google}" method="get">
+                <button class="login-btn" type="submit">
+                    <img src="/images/google-color-svgrepo-com.svg"> <p>Login with Google</p>
+                </button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

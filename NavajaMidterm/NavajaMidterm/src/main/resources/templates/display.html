@@ -5,55 +5,93 @@
     <title>Contacts</title>
     <link rel="stylesheet" th:href="@{/css/index.css}">
     <style>
-        .display-container{
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .topbar {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
-            height: 100vh;
-        }
-        .table-div{
-            display: table;
-            width: 768px;
-
-            border-collapse: collapse;
-        }
-        .table-row{
-            display: table-row;
-            text-align: center;
-        }
-        .divCell{
-            display: table-cell;
+            background-color: #2c3e50;
             padding: 10px;
         }
-        .header{
-            font-weight: bold;
-            background-color: mediumspringgreen;
-        }
-        .div-header{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 768px;
-            padding: 12px;
-        }
-        .create-btn, .addSubmit{
-            background-color: lightgreen;
-            color: black;
+        .logout-btn {
+            background-color: #e74c3c;
+            color: white;
             border: none;
             height: 48px;
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
         }
-        .create-btn:hover, .addSubmit:hover{
-            background-color: aquamarine;
+        .logout-btn:hover {
+            background-color: #c0392b;
         }
-        .actions{
+        .display-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .table-div {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .table-row {
+            display: flex;
+            text-align: center;
+            width: 100%;
+            padding: 5px;
+        }
+
+        .divCell {
+            flex: 1;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .header {
+            font-weight: bold;
+            background-color: #2c3e50;
+            color: white;
+        }
+        .div-header {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 768px;
+            padding: 12px;
         }
-        .modal{
+        .create-btn, .addSubmit {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            height: 48px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .create-btn:hover, .addSubmit:hover {
+            background-color: #2980b9;
+        }
+        .actions {
+            display: flex;
+            justify-content: space-around;
+        }
+        .modal {
             display: none;
             position: fixed;
             top: 0;
@@ -64,59 +102,74 @@
             justify-content: center;
             align-items: center;
         }
-        .modal-content{
-            background: whitesmoke;
+        .modal-content {
+            background: white;
             padding: 24px;
-            height: 324px;
-            width: 512px;
+            width: 90%;
+            max-width: 512px;
             border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.3s ease;
         }
-        .modal-header{
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
         }
-        .form-group{
+        .form-group {
             display: flex;
             justify-content: space-between;
             align-items: center;
             height: 48px;
             margin: 12px 0;
         }
-        label{
+        label {
             font-weight: bold;
-
         }
-        input{
+        input {
             height: 24px;
             width: 256px;
-            border: none;
-            background: lightgrey;
+            border: 1px solid #ccc;
+            background: white;
             padding: 6px;
+            border-radius: 4px;
         }
-        .modal-footer{
+        .modal-footer {
             display: flex;
             justify-content: flex-end;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
         }
-        .actionBtn{
-            background-color: lightgreen;
+        .actionBtn {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
             width: 82px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 4px;
+            padding: 6px;
             border: none;
             cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
-        .actionBtn:hover{
-            background-color: aquamarine;
+        .actionBtn:hover {
+            background-color: #c0c0c0;
         }
     </style>
 </head>
 <body>
-<form th:action="@{/logout}" method="post">
-    <button type="submit">Logout</button>
-</form>
+    <div class="topbar">
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
     <div class="display-container">
         <div class="div-header">
             <h1>Your Contacts</h1>
@@ -135,10 +188,10 @@
                 <div class="divCell" ><p th:text="${contact['email']}"></p></div>
                 <div class="divCell" ><p th:text="${contact['phone']}"></p></div>
                 <div class="divCell actions">
-                    <button class="actionBtn" th:attr="onclick=|updateModal('${contact['resourceName']}', '${contact['name']}', '${contact['email']}', '${contact['phone']}')|"><img src="/images/edit-user-7-svgrepo-com.svg">Update</button>
+                    <button class="actionBtn" th:attr="onclick=|updateModal('${contact['resourceName']}', '${contact['name']}', '${contact['email']}', '${contact['phone']}')|"><img src="/images/edit.png">Update</button>
                     <form th:action="@{/delete-contact}" method="post">
                         <input type="hidden" name="resourceName" th:value="${contact['resourceName']}">
-                        <button class="actionBtn" type="submit"><img src="/images/delete-svgrepo-com%20(1).svg"/>Delete</button>
+                        <button class="actionBtn" type="submit"><img src="/images/delete.png"/>Delete</button>
                     </form>
                 </div>
             </div>

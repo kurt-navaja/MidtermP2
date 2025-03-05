@@ -22,7 +22,7 @@ public class SecurityConfig {
         return http
                 .authorizeHttpRequests(oauth -> oauth
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
-                        .requestMatchers("/login.html", "/", "index.html").permitAll()
+                        .requestMatchers("/login.html", "/").permitAll()
                         .anyRequest().authenticated())
                 .oauth2Login(oauth2login -> oauth2login.defaultSuccessUrl("/display.html", true))
                 .formLogin(formLogin -> formLogin.loginPage("/login.html"))

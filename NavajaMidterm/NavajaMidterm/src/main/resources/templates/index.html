@@ -10,34 +10,48 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
         }
 
         .login-btn {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            background-color: white;
-            width: 240px;
-            padding: 10px 20px;
-            color: black;
-            border-color: black;
-            border-width: 2px;
+            justify-content: center;
+            background-color: #007bff;
+            width: 260px;
+            padding: 12px 24px;
+            color: white;
+            border: none;
             border-radius: 5px;
             cursor: pointer;
-        }
-        p{
             font-size: 16px;
             font-weight: bold;
+            text-decoration: none;
+        }
+
+        .login-btn img {
+            margin-right: 10px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin: 0;
         }
     </style>
     <title>Login</title>
 </head>
 <body>
 <div class="login-container">
-    <h1>Login to contacts</h1>
+    <h1>Login to Contacts</h1>
     <form class="login-form" th:action="@{/oauth2/authorization/google}" method="get">
         <button class="login-btn" type="submit">
-            <img src="/images/google-color-svgrepo-com.svg"> <p>Login with Google</p>
+            <img src="/images/google-color-svgrepo-com.svg" alt="Google Logo"> <p>Login with Google</p>
         </button>
     </form>
 </div>

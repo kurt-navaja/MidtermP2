@@ -63,7 +63,7 @@ public class ContactsController {
 
     @RequestMapping("/")
     public String index() {
-        return "index";
+        return "login";
     }
     @RequestMapping("/login.html")
     public String login() {

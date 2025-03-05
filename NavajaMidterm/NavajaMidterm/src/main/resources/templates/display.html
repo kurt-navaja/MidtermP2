@@ -64,15 +64,17 @@
             font-weight: bold;
             background-color: #2c3e50;
             color: white;
+            font-size: larger;
         }
         .div-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            max-width: 768px;
+            max-width: 1480px;
             padding: 12px;
         }
+
         .create-btn, .addSubmit {
             background-color: #3498db;
             color: white;
@@ -89,7 +91,6 @@
         }
         .actions {
             display: flex;
-            justify-content: space-around;
         }
         .modal {
             display: none;
@@ -103,10 +104,11 @@
             align-items: center;
         }
         .modal-content {
-            background: white;
+            background-color: #37506a;
+            color: white;
             padding: 24px;
             width: 90%;
-            max-width: 512px;
+            max-width: 640px; /* Increased max-width */
             border-radius: 12px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             animation: fadeIn 0.3s ease;
@@ -121,6 +123,11 @@
             align-items: center;
             border-bottom: 1px solid #ddd;
             padding-bottom: 10px;
+            padding-left: 10px;
+        }
+        .close {
+            font-size: 30px; /* Increased font size */
+            cursor: pointer;
         }
         .form-group {
             display: flex;
@@ -149,15 +156,18 @@
         .actionBtn {
             background-color: #ffffff;
             color: rgb(0, 0, 0);
-            width: 82px;
+            width: 100px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 6px;
+            padding-right: 15px;
+            padding-left: -40px;
+            margin-left: 50px;
             border: none;
             cursor: pointer;
             border-radius: 5px;
             transition: background-color 0.3s ease;
+            height: 48px; /* Added height to match update button */
         }
         .actionBtn:hover {
             background-color: #c0c0c0;
